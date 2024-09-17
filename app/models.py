@@ -2,7 +2,7 @@ from app import database
 
 
 class Guest(database.Model):
-    """Simple database model to track event attendees."""
+    """Simple database model to track event attendees. test"""
 
     __tablename__ = 'guests'
     id = database.Column(database.Integer, primary_key=True)
