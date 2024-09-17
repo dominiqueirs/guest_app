@@ -1,0 +1,9 @@
+services:
+  backend:
+    build: .
+    environment :
+    - DATABASE_URL=sqlite:///db.sqlite
+    volumes:
+      - .:/code
+    ports:
+      - 5000:5000

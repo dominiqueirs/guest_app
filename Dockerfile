@@ -5,14 +5,13 @@ COPY requirements.txt /requirements.txt
 RUN pip install -r requirements.txt
 
 COPY app/templates /app/templates
+COPY app/models.py /app/models.py
 COPY app/app.py app/app.py
-COPY app/models.py app/models.py
+COPY app/migrations app/migrations
 
-WORKDIR app/
+WORKDIR /app
 
-ENV FLASK_APP=app.py
-ENV DATABASE_URL=sqlite:///db.sqlite
+ENV FLASK_APP app.py
 EXPOSE 5000
-CMD flask db init && flask db migrate -m "initialize migration" && flask db upgrade && flask run -h 0.0.0.0 --port 5000
 
-
+CMD sleep 5 && flask db upgrade && flask run -h 0.0.0.0 --port 5000
